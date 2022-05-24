@@ -1,0 +1,20 @@
+name: CI
+on: [pull_request]
+jobs:
+  run-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Node.jobs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Instalando Dependências
+        run: npm install
+      - name: Rodando Testes
+        run: npm test
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

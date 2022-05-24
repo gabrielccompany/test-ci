@@ -15,6 +15,7 @@ class MathTest {
 
     static test4(x, y) {
     return x / y
-}}
+}
+}
 
 module.exports = MathTest;
